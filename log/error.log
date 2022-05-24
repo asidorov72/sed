@@ -1,0 +1,4 @@
+[2022-05-24T18:53:49.194768+03:00] file-helper.ERROR: {"status":"error","message":"Not found text 'alena' in the file \/var\/www\/html\/sed\/input.txt."} [] []
+[2022-05-24T18:54:30.394680+03:00] validator.ERROR: File is invalid. [] []
+[2022-05-24T18:56:49.905413+03:00] validator.ERROR: File /var/www/html/sed/input_.txt is invalid. [] []
+[2022-05-24T18:57:02.961502+03:00] file-helper.ERROR: {"status":"error","message":"Not found text 'alena' in the file \/var\/www\/html\/sed\/input.txt."} [] []

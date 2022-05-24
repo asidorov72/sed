@@ -1,5 +1,7 @@
 <?php
 /**
+ * src/App/Command/SedCommand.php
+ *
  * @author Alexander Sidorov
  * @email alexsidorov1972@gmail.com
  * @date 16-05-2022
@@ -14,6 +16,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Console\App\Service\SedCommandService;
 use Console\App\Validator\SedCommandValidator;
+use Console\App\Helper\LoggerHelper;
 
 class SedCommand extends Command implements ISedCommand
 {
@@ -28,7 +31,7 @@ class SedCommand extends Command implements ISedCommand
     {
         parent::__construct($name);
 
-        $this->sedCommandService = new SedCommandService(new SedCommandValidator());
+        $this->sedCommandService = new SedCommandService(new SedCommandValidator(new LoggerHelper('validator')));
     }
 
     public function configure()

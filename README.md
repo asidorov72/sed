@@ -24,6 +24,11 @@ Implement in any language of your choice a Stream Editor like sed.
 We expect you to implement just the mentioned above featurees - the substitude 's' command and the -i flag for in-place edit. 
 Send us back your solution with written unit tests and READ.me file with instructions how to execute/use your code and the unit tests
 
+# What was done
+1. Task requirements (commad string was a bit changed)
+2. Logger (errors and debug)
+3. Tests (phpunit)
+
 # Install
 1. git clone https://github.com/asidorov72/sed.git
 2. composer install
