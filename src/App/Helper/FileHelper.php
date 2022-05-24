@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Alexander Sidorov
+ * @email alexsidorov1972@gmail.com
+ * @date 16-05-2022
+ */
 
 namespace Console\App\Helper;
 
@@ -57,5 +62,14 @@ class FileHelper
         }
 
         return $result;
+    }
+
+    /**
+     * @param string $filePath
+     * @return string
+     */
+    public static function setRealPath(string $filePath)
+    {
+        return dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . $filePath;
     }
 }

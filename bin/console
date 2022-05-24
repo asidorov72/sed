@@ -1,5 +1,10 @@
 #!/usr/bin/env php
 <?php
+/**
+ * @author Alexander Sidorov
+ * @email alexsidorov1972@gmail.com
+ * @date 16-05-2022
+ */
 
 // $ php bin/console list
 require_once __DIR__ . '/../vendor/autoload.php';
