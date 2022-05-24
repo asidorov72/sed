@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Alexander Sidorov
+ * @email alexsidorov1972@gmail.com
+ * @date 16-05-2022
+ */
 
 namespace Console\App\Command;
 
@@ -48,13 +53,13 @@ class SedCommand extends Command implements ISedCommand
             $params['flag-ignore'] = self::FLAG_IGNORE;
         }
 
-        try {
-            $res = $this->sedCommandService->handle($params);
-            $output->writeln($this->sedCommandService->outputResult($res));
-        } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+        $res = $this->sedCommandService->handle($params);
+        $output->writeln($this->sedCommandService->outputResult($res));
+
+        if ($res['status'] === 'error') {
+            return Command::INVALID;
         }
 
-        return 1;
+        return Command::SUCCESS;
     }
 }

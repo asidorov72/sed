@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author Alexander Sidorov
+ * @email alexsidorov1972@gmail.com
+ * @date 16-05-2022
+ */
 
 namespace Console\App\Service;
 
@@ -23,10 +28,11 @@ class SedCommandService implements ICommandHandler
         $result = [];
 
         try {
+            $this->setFilePath($params);
             $this->sedCommandReplaceValidator->validate($params, new SedCommandConstraints());
             $result = FileHelper::findAndReplaceStr($params['filename'], $params['search'], $params['replace'], $params['flag-ignore']);
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            return ['status' => 'error', 'message' => $e->getMessage()];
         }
 
         return $result;
@@ -37,11 +43,22 @@ class SedCommandService implements ICommandHandler
         $resultStr = "";
 
         if (!empty($result['content'])) {
-            $resultStr .= $result['content'] . "\n";
+            $resultStr .= $result['content'];
+            $resultStr .= "\n==============\n\n";
         }
 
-        $resultStr .= "> " . $result['message'];
+        $resultStr .= '[' . $result['status'] . "]\n";
+        $resultStr .= $result['message'];
 
         return $resultStr;
+    }
+
+    /**
+     * @param $params
+     * @return void
+     */
+    public function setFilePath(&$params): void
+    {
+        $params['filename'] = FileHelper::setRealPath($params['filename']);
     }
 }
